@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+	<h:head>
+		<title>Registration Form</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    
+    	<link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css" rel="stylesheet"></link>
+    	<link href="css/bootstrap-responsive.css" rel="stylesheet"></link>
+    	<style type="text/css"/>
+	</h:head>
+	<h:body>
+	<center>
+		 
+			    Enter amount you want to transfer to the manager:
+			    
+			    <h:inputText id="assignAmount" styleClass="form-control" value="#{requestManagerController.assignAmount}" a:placeholder="enter amount" required="true" requiredMessage="amount can't be empty"/>
+				<h:message for="assignAmount" style="color:red"/>
+				<br/><br/>
+				
+				
+				<h:commandButton styleClass="btn btn-small btn-warning" value="submit" action="#{requestManagerController.selectManager}" >
+				<f:param value="#{loginController.loginVO.username}" name="username" /><f:param value="#{user.user_id}" name="manager_id" /></h:commandButton><br/><br/>
+				
+			
+		
+	<h:form>
+		<h:commandButton style=" position:absolute; top:0; right:0;"
+			styleClass="btn btn-small btn-warning" value="logout"
+			action="#{loginController.logout}" />
+		<br />
+		<br />
+		
+		</h:form>
+
+
+		
+			</center>
+			<h:messages  globalOnly="true"  />
+			<script src="http://code.jquery.com/jquery.js"></script>
+    		<script src="js/bootstrap.min.js"></script>
+	</h:body>
+</html> 
+
+

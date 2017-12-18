@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+
+	<title>Profile Page</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+
+	<link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css"
+		rel="stylesheet"></link>
+	<link href="css/bootstrap-responsive.css" rel="stylesheet"></link>
+	<style type="text/css" />
+</h:head>
+<h:body>
+
+
+	<h3>Welcome, #{loginController.loginVO.username}</h3>
+	<br />
+
+	<h:form>
+		<h:commandButton style=" position:absolute; top:0; right:0;"
+			styleClass="btn btn-small btn-warning" value="logout"
+			action="#{loginController.logout}" />
+		<br />
+		<br />
+
+	</h:form>
+	<h:form>
+		<h:commandButton action="userProfile.xhtml"
+			value="Home Page">
+			<f:param value="#{loginController.loginVO.username}" name="username" />
+		</h:commandButton>
+	</h:form>
+<h:form>
+		<h:commandButton action="#{updateProfileController.updateUser}"
+			value="update Profile">
+			<f:param value="#{loginController.loginVO.username}" name="username" />
+		</h:commandButton>
+	</h:form>
+
+	<h:form>
+
+  Enter amount you want to transfer to the manager:
+			    
+			    <h:inputText id="assignAmount" styleClass="form-control" value="#{requestManagerController.assignAmount}" a:placeholder="enter amount" required="true" requiredMessage="amount can't be empty"/>
+				<h:message for="assignAmount" style="color:red"/>
+				<br/><br/>
+		<h:dataTable value="#{ requestManagerController.list }" var="user" rules="rows"
+			cellpadding="7">
+			<f:facet name="header"></f:facet>
+			<f:facet name="footer"></f:facet>
+
+			<h:column>
+				<f:facet name="header">User_id</f:facet>
+                     #{ user.user_id }
+                </h:column>
+
+			<h:column>
+				<f:facet name="header">First Name</f:facet>
+                     #{ user.firstname }
+                </h:column>
+
+			<h:column>
+				<f:facet name="header">Last Name</f:facet>
+                     #{ user.lastname }
+                </h:column>
+
+			<h:column>
+				<f:facet name="header">Contact number</f:facet>
+                     #{ user.contactnumber }
+                </h:column>
+			<h:column>
+				<f:facet name="header">Email</f:facet>
+                     #{ user.email }
+                </h:column>
+			<h:column>
+				<f:facet name="header">Fees</f:facet>
+                     #{ user.fees }
+                </h:column>
+			<h:column>
+				<f:facet name="header">Select</f:facet>
+				<h:commandButton action="#{requestManagerController.selectManager}"
+					value="Select Manager">
+					<f:param value="#{user.user_id}" name="manager_id" />
+					<f:param value="#{loginController.loginVO.username}" name="username" />
+				</h:commandButton>
+			</h:column>
+			
+		</h:dataTable>
+	</h:form>
+	
+	<h:messages globalOnly="true" />
+</h:body>
+</html>

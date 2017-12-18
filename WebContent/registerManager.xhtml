@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough" >
+	<h:head>
+		<title>Registration Form</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    
+    	<link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css" rel="stylesheet"></link>
+    	<link href="css/bootstrap-responsive.css" rel="stylesheet"></link>
+    	<style type="text/css"/>
+	</h:head>
+	<h:body>
+	<center>
+		  <h3> Registration Form</h3>
+		   <br/><br/>
+			<h:form><br/>
+			    First Name:
+			    <h:inputText id="firstname" styleClass="form-control" value="#{registrationController.registrationVO.firstname}" a:placeholder="first name" required="true" requiredMessage="firstName can't be empty"/>
+				<h:message for="firstname" style="color:red"/>
+				<br/><br/>
+				Last Name:
+			    <h:inputText id="lastname" styleClass="form-control" value="#{registrationController.registrationVO.lastname}" a:placeholder="last name" required="true" requiredMessage="lastName can't be empty"/>
+				<h:message for="laststname" style="color:red"/>
+				<br/><br/>
+				Contact Number:
+			    <h:inputText id="contactnumber" styleClass="form-control" value="#{registrationController.registrationVO.contactnumber}" a:placeholder="contact number" required="true" requiredMessage="contactnumber can't be empty"/>
+				<h:message for="contactnumber" style="color:red"/>
+				<br/><br/>
+				Email-id:
+				<h:inputText id="email" styleClass="form-control" value="#{registrationController.registrationVO.email}" a:placeholder="email" required="true" requiredMessage="Email-id must be provided">
+				<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.(com|net|‌​org|edu)"/></h:inputText>
+				<h:message for="email" style="color:red"/>
+				<br/><br/>
+				Fees:
+				<h:inputText id="fees" styleClass="form-control" value="#{registrationController.registrationVO.fees}" a:placeholder="fees" required="true" requiredMessage="Fees must be provided">
+				<h:message for="fees" style="color:red"/></h:inputText>
+				<br/><br/>
+				Username:
+				<h:inputText id="userName" styleClass="form-control" value="#{registrationController.registrationVO.username}" a:placeholder="Username" required="true" requiredMessage="Username can't be empty"/>
+				<h:message for="userName" style="color:red"/>
+				<br/><br/>
+				Password:<h:inputSecret id="password" styleClass="form-control" value="#{registrationController.registrationVO.password}" a:placeholder="Password" required="true" requiredMessage="Password can't be empty">
+				</h:inputSecret>
+				<h:message for="password" style="color:red"/><br/><br/>
+				Re-Enter Password:<h:inputSecret id="password2" styleClass="form-control" value="#{registrationController.registrationVO.password2}" a:placeholder="Password" required="true" requiredMessage="Password can't be empty">
+				</h:inputSecret>
+				<h:message for="password2" style="color:red"/><br/><br/>
+				<h:commandButton styleClass="btn btn-small btn-warning" value="Register" action="#{registrationController.managerRegistration}" /><br/><br/>
+				
+				Already have an account?Sign in here...  <h:outputLink value="login.xhtml"  >Sign in</h:outputLink>
+			</h:form>
+			</center>
+			<h:messages  globalOnly="true"  />
+			<script src="http://code.jquery.com/jquery.js"></script>
+    		<script src="js/bootstrap.min.js"></script>
+	</h:body>
+</html> 
+
+

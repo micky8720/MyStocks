@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+	<h:head>
+		<title>Registration Form</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    
+    	<link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css" rel="stylesheet"></link>
+    	<link href="css/bootstrap-responsive.css" rel="stylesheet"></link>
+    	<style type="text/css"/>
+	</h:head>
+	<h:body>
+	<center>
+		  <h3> Update Profile  Form</h3>
+		   <br/><br/>
+		   <h:form><br/>
+			
+			    First Name:
+			    <ui:repeat value="#{updateProfileController.list}" var="user">
+			    <h:inputText id="firstname" styleClass="form-control" value="#{updateProfileController.updateProfileVO.firstname}" a:placeholder="#{user.firstname}" required="true" requiredMessage="firstName can't be empty"/>
+				<h:message for="firstname" style="color:red"/>
+				<br/><br/>
+				Last Name:
+			    <h:inputText id="lastname" styleClass="form-control" value="#{updateProfileController.updateProfileVO.lastname}" a:placeholder="#{user.lastname}" required="true" requiredMessage="lastName can't be empty"/>
+				<h:message for="lastname" style="color:red"/>
+				<br/><br/>
+				Contact Number:
+			    <h:inputText id="contactnumber" styleClass="form-control" value="#{updateProfileController.updateProfileVO.contactnumber}" a:placeholder="#{user.contactnumber}" required="true" requiredMessage="contactnumber can't be empty"/>
+				<h:message for="contactnumber" style="color:red"/>
+				<br/><br/>
+				Email-id:
+				<h:inputText id="email" styleClass="form-control" value="#{updateProfileController.updateProfileVO.email}" a:placeholder="#{user.email}" required="true" requiredMessage="Email-id must be provided">
+				<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.(com|net|‌​org|edu)"/></h:inputText>
+				<h:message for="email" style="color:red"/>
+				<br/><br/>
+				
+				
+				Password:<h:inputSecret id="password" styleClass="form-control" value="#{updateProfileController.updateProfileVO.password}" a:placeholder="#{user.password}" required="true" requiredMessage="Password can't be empty">
+				</h:inputSecret>
+				<h:message for="password" style="color:red"/><br/><br/>
+				
+				<h:commandButton styleClass="btn btn-small btn-warning" value="Update" action="#{updateProfileController.updateManagerDatabase}" >
+				<f:param value="#{loginController.loginVO.username}" name="username" /></h:commandButton><br/><br/>
+				
+				
+				</ui:repeat>
+			</h:form>
+		 <h:outputLink value="userProfile.xhtml"  >Back To Profile</h:outputLink>
+	<h:form>
+		<h:commandButton style=" position:absolute; top:0; right:0;"
+			styleClass="btn btn-small btn-warning" value="logout"
+			action="#{loginController.logout}" />
+		<br />
+		<br />
+		
+		</h:form>
+
+
+		
+			</center>
+			<h:messages  globalOnly="true"  />
+			<script src="http://code.jquery.com/jquery.js"></script>
+    		<script src="js/bootstrap.min.js"></script>
+	</h:body>
+</html> 
+
+
